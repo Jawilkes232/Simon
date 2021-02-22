@@ -1,10 +1,12 @@
 const buttons = document.querySelector('.buttons');
 const allButtons = document.querySelectorAll('.button')
-const score = document.querySelector('.score');
+const scoreBoard = document.querySelector('.score');
+const goButton = document.querySelector('#go')
+let scores = 0
 const computerPattern = [];
-const playerPattern = [];
+let playerPattern = [];
 const audio = [];
-let roundSpeed = 1000
+let roundSpeed = 1075
 let computer = true;
 let counter = 0
 
@@ -59,15 +61,8 @@ function newRound(){
     playerPattern = []
     roundSpeed -= 75
     computerTurn(computerPattern)
+    console.log(computerPattern, playerPattern)
     let counter = 0
-    if(counter == computerPattern.length){
-        checkPattern()
-        if (checkPattern(computerPattern, playerPattern)) {
-            turns()
-        }else{
-            //lose 
-        }
-    }
 
 }
 
@@ -89,7 +84,8 @@ function checkPattern(arr1, arr2){
         return false
     } else {
         for (let i = 0; i < arr1.length; i++) {
-            if(arr1[i] != arr2[i]){
+            if(arr1[i] != parseInt(arr2[i])){
+                console.log(parseInt(arr2[i]))
                 return false
             }else {
                 return true
@@ -98,6 +94,20 @@ function checkPattern(arr1, arr2){
         }
     }
 }
+function score(){
+    if(counter == computerPattern.length){
+        if (checkPattern(computerPattern, playerPattern)) {
+            scores++
+            console.log('correct!')
+            scoreBoard.innerHTML = 'Score:' + scores
+            turns()
+            newRound()
+        }else{
+        console.log('Oh no')
+        }
+    }
+}
+
 
 function handleButtonClick(event){
     console.log('clicked!')
@@ -114,8 +124,13 @@ function handleButtonClick(event){
         counter++
         console.log(counter)
     }
+    if (counter == computerPattern.length){
+        turns()
+        score()
+    }
 }
 buttons.addEventListener('click', handleButtonClick)
+goButton.addEventListener('click', newRound)
 
 
 
