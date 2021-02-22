@@ -29,6 +29,9 @@
     transition: 0.3s;
     
 }
+.no-touchy{  
+    pointer-events: none;
+}
 .fade{
     animation: fade .6s linear forwards;
 }
