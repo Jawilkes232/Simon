@@ -2,10 +2,11 @@ const buttons = document.querySelector('.buttons');
 const allButtons = document.querySelectorAll('.button')
 const scoreBoard = document.querySelector('.score');
 const goButton = document.querySelector('#go')
-let scores = 0
-const computerPattern = [];
-let playerPattern = [];
+const resetButton = document.querySelector('#reset')
 const audio = [];
+let scores = 0
+let computerPattern = [];
+let playerPattern = [];
 let roundSpeed = 1075
 let computer = true;
 let counter = 0
@@ -59,10 +60,10 @@ function computerTurn (arr) {
 
 function newRound(){
     playerPattern = []
-    roundSpeed -= 75
+    roundSpeed -= 100
     computerTurn(computerPattern)
     console.log(computerPattern, playerPattern)
-    let counter = 0
+     counter = 0
 
 }
 
@@ -80,18 +81,20 @@ function turns(){
    
 }
 function checkPattern(arr1, arr2){
+    console.log(arr1, arr2)
     if (arr1.length != arr2.length) {
         return false
     } else {
         for (let i = 0; i < arr1.length; i++) {
-            if(arr1[i] != parseInt(arr2[i])){
+            if(arr1[i] !== parseInt(arr2[i])){
                 console.log(parseInt(arr2[i]))
                 return false
-            }else {
-                return true
+            // }else {
+            //     return true
             }
             
         }
+        return true
     }
 }
 function score(){
@@ -108,6 +111,12 @@ function score(){
     }
 }
 
+function reset() {
+    computerPattern = []
+    playerPattern = []
+    scores = 0
+    scoreBoard.innerHTML = 'Score:' + scores
+}
 
 function handleButtonClick(event){
     console.log('clicked!')
@@ -124,6 +133,8 @@ function handleButtonClick(event){
         counter++
         console.log(counter)
     }
+    // give score condition
+    // restart turn
     if (counter == computerPattern.length){
         turns()
         score()
@@ -131,13 +142,4 @@ function handleButtonClick(event){
 }
 buttons.addEventListener('click', handleButtonClick)
 goButton.addEventListener('click', newRound)
-
-
-
-
-// make players turn
-    // players turn must reset playerPattern
-
-
-// give score condition
-// restart turn
+resetButton.addEventListener('click', reset)
