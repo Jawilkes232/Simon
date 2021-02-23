@@ -3,6 +3,8 @@ const allButtons = document.querySelectorAll('.button')
 const scoreBoard = document.querySelector('.score');
 const goButton = document.querySelector('#go')
 const resetButton = document.querySelector('#reset')
+const lossScreen = document.querySelector('#loss')
+const newButton = document.querySelector('#new')
 const audio = [];
 let scores = 0
 let computerPattern = [];
@@ -56,11 +58,11 @@ function computerTurn (arr) {
     }, roundSpeed)
     
 }
-// computerTurn([0,1,2,0])
+
 
 function newRound(){
     playerPattern = []
-    roundSpeed -= 100
+    roundSpeed -= 80
     computerTurn(computerPattern)
     console.log(computerPattern, playerPattern)
      counter = 0
@@ -101,12 +103,12 @@ function score(){
     if(counter == computerPattern.length){
         if (checkPattern(computerPattern, playerPattern)) {
             scores++
-            console.log('correct!')
             scoreBoard.innerHTML = 'Score:' + scores
             turns()
             newRound()
         }else{
-        console.log('Oh no')
+            loss()
+        console.log('Oh no') //loss of game
         }
     }
 }
@@ -116,6 +118,16 @@ function reset() {
     playerPattern = []
     scores = 0
     scoreBoard.innerHTML = 'Score:' + scores
+}
+
+function loss() {
+    lossScreen.style.display = 'block'
+    document.querySelector('.background').style.filter = 'blur(4px)'
+}
+function newGame() {
+    lossScreen.style.display = 'none'
+    document.querySelector('.background').style.filter = 'none'
+    reset()
 }
 
 function handleButtonClick(event){
@@ -131,7 +143,6 @@ function handleButtonClick(event){
         // players input updates array
 		playerPattern.push(button.dataset.number)
         counter++
-        console.log(counter)
     }
     // give score condition
     // restart turn
@@ -143,3 +154,4 @@ function handleButtonClick(event){
 buttons.addEventListener('click', handleButtonClick)
 goButton.addEventListener('click', newRound)
 resetButton.addEventListener('click', reset)
+newButton.addEventListener('click', newGame)

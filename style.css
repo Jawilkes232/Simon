@@ -1,16 +1,30 @@
-*{
+html{
     box-sizing: border-box;
+    height: 100vh;
+    margin: 0;
+    
 }
-#game {
-    position: relative;
-    border-radius: 60%;
-    margin: 15vh auto;
-    padding: 20px;
-    width: 80vh;
-    max-width: 500px;
-    height: 80vh;
-    max-height: 500px;
-    background: rgba(0, 0, 0, 0.7);
+body {
+    margin: 0;
+    font-family: 'Work Sans', sans-serif;
+    background: linear-gradient( rgba(0,212,255,1) 4%, rgba(121, 9, 112, 0.29) 55%, rgba(173,14,6,0.9) 100% );
+    background-repeat: no-repeat;
+    text-align: center;
+}
+h1 {
+    text-align: center;
+    margin-top: 5%;
+    font-size: 5rem;
+}
+button{
+    font-family: 'Work Sans', sans-serif;
+    font-size: xx-large;
+    border: 1px solid rgb(0, 0, 0);
+    background: rgba(0,212,255,1) 4%;
+    margin:  5vw 4vw;
+}
+.score{
+    font-size: xx-large;
 }
 .buttons {
     position: relative;
@@ -40,7 +54,7 @@
     50% {opacity: 1;}
     100% {opacity: .2;}
 }
-  
+
 .simon-1 {
     top: 0;
     left: 0;
@@ -48,21 +62,58 @@
     
     
 }
-  
+
 .simon-2 {
     top: 0;
     right: 0;
     background: #e8150ec7;
 }
-  
+
 .simon-3 {
     bottom: 0;
     right: 0;
     background: #0852f4e0;
 }
-  
+
 .simon-4 {
     bottom: 0;
     left: 0;
     background: #f7df2cde;
+}
+#reset{
+    background: rgba(216, 18, 8, 0.79) 100%;
+}
+#game {
+    position: relative;
+    border-radius: 60%;
+    margin: 10vh auto;
+    padding: 20px;
+    width: 80vh;
+    max-width: 500px;
+    height: 80vh;
+    max-height: 500px;
+    background: rgba(0, 0, 0, 0.7);
+}
+#loss {
+    background-color: rgba(173,14,6,0.95);
+    z-index: 1;
+    position: fixed;
+    display: none;
+    margin: 14vh auto;
+    padding: 20px;
+    width: 80vh;
+    max-width: 1000px;
+    height: 80vh;
+    max-height: 750px;
+    overflow: auto;
+    left: 25%;
+    border-radius: 2%;
+}
+#new{
+    position: absolute;
+    bottom: 0;
+    background-color: #0852f4e0;    
+}
+#loss-text{
+    padding-top: 8vh;
 }
