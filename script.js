@@ -5,6 +5,7 @@ const goButton = document.querySelector('#go')
 const resetButton = document.querySelector('#reset')
 const lossScreen = document.querySelector('#loss')
 const newButton = document.querySelector('#new')
+const signal = document.querySelector('.turn')
 const audio = [];
 let scores = 0
 let computerPattern = [];
@@ -46,7 +47,9 @@ function computerTurn (arr) {
         allButtons[arr[i]].classList.add('fade')
 		music(audio[arr[i]])
         setTimeout(function(){
-           allButtons[arr[i]].classList.remove('fade')
+           allButtons.forEach(button => {
+            button.classList.remove('fade')
+           })
         }, 500)
     }
         if(i != arr.length ){
@@ -64,9 +67,7 @@ function newRound(){
     playerPattern = []
     roundSpeed -= 80
     computerTurn(computerPattern)
-    console.log(computerPattern, playerPattern)
      counter = 0
-
 }
 
 
@@ -74,50 +75,35 @@ function turns(){
     if(computer){
         computer = false;
         buttons.classList.add('no-touchy')
-        console.log('no touchy!')
+        signal.innerText = 'Please Wait'
+        signal.style.backgroundColor = 'rgba(216, 18, 8, 0.79)'
     } else {
         computer = true;
         buttons.classList.remove('no-touchy')
-        console.log('you can touch!')
+        signal.innerText = 'Your Turn'
+        signal.style.backgroundColor = 'rgba(0,212,255,1)'
     }
    
 }
 function checkPattern(arr1, arr2){
-    console.log(arr1, arr2)
-    if (arr1.length != arr2.length) {
-        return false
-    } else {
         for (let i = 0; i < arr1.length; i++) {
             if(arr1[i] !== parseInt(arr2[i])){
-                console.log(parseInt(arr2[i]))
-                return false
-            // }else {
-            //     return true
-            }
-            
+               return false
+            }            
         }
         return true
-    }
-}
-function score(){
-    if(counter == computerPattern.length){
-        if (checkPattern(computerPattern, playerPattern)) {
-            scores++
-            scoreBoard.innerHTML = 'Score:' + scores
-            turns()
-            newRound()
-        }else{
-            loss()
-        console.log('Oh no') //loss of game
-        }
-    }
 }
 
 function reset() {
     computerPattern = []
     playerPattern = []
     scores = 0
+    counter = 0
+    allButtons.forEach(button => {
+        button.classList.remove('fade')
+       })
     scoreBoard.innerHTML = 'Score:' + scores
+    signal.innerText = 'Press Start!'
 }
 
 function loss() {
@@ -131,7 +117,6 @@ function newGame() {
 }
 
 function handleButtonClick(event){
-    console.log('clicked!')
     if(event.target.classList.contains('button')){
        	event.preventDefault();
         const button = event.target
@@ -142,14 +127,18 @@ function handleButtonClick(event){
         }, 500)
         // players input updates array
 		playerPattern.push(button.dataset.number)
-        counter++
+        if (playerPattern.length == computerPattern.length) {
+            if(checkPattern(computerPattern,playerPattern)){
+                scores++
+                scoreBoard.innerHTML = 'Score:' + scores
+                newRound()
+            }else {
+                loss()
+            }
+        }
     }
     // give score condition
     // restart turn
-    if (counter == computerPattern.length){
-        turns()
-        score()
-    }
 }
 buttons.addEventListener('click', handleButtonClick)
 goButton.addEventListener('click', newRound)
