@@ -6,6 +6,8 @@ const resetButton = document.querySelector('#reset')
 const lossScreen = document.querySelector('#loss')
 const newButton = document.querySelector('#new')
 const signal = document.querySelector('.turn')
+const extreme = document.querySelector('#extreme')
+const game = document.querySelector('#game')
 const audio = [];
 let scores = 0
 let computerPattern = [];
@@ -107,6 +109,11 @@ function reset() {
        })
     scoreBoard.innerHTML = 'Score:' + scores
     signal.innerText = 'Press Start!'
+    buttons.style.overflow = 'hidden'
+    for (let i = 0; i < allButtons.length; i++) {
+        allButtons[i].classList.remove(`extreme-${i + 1}`)
+    }
+    game.style.backgroundColor = 'rgba(0, 0, 0, 0.7)'
 }
 //pushes lose modal 
 function loss() {
@@ -118,6 +125,14 @@ function newGame() {
     lossScreen.style.display = 'none'
     document.querySelector('.background').style.filter = 'none'
     reset()
+}
+function extremeMode() {
+    buttons.style.overflow = 'visible'
+    game.style.backgroundColor = 'transparent'
+    for (let i = 0; i < allButtons.length; i++) {
+        allButtons[i].classList.add(`extreme-${i + 1}`)
+        
+    }
 }
 //click handler 
 function handleButtonClick(event){
@@ -148,3 +163,4 @@ buttons.addEventListener('click', handleButtonClick)
 goButton.addEventListener('click', newRound)
 resetButton.addEventListener('click', reset)
 newButton.addEventListener('click', newGame)
+extreme.addEventListener('click', extremeMode)

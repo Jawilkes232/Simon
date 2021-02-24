@@ -29,7 +29,55 @@ button{
 button:hover {
     opacity: 1;
 }
-.score{
+.extreme-1 {
+    animation-name: extreme-1;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+}
+@keyframes extreme-1 {
+    0%   {left:0vw; top:0vw;}
+    25%  {left:50vw; top:0vw;}
+    50%  {left:50vw; top:50vw;}
+    75%  {left:-10vw; top:50vw;}
+    100% {left:0vw; top:0vw;}
+}
+.extreme-2 {
+    animation-name: extreme-2;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+}
+@keyframes extreme-2 {
+    0%   {left:50vw; top:0vw;}
+    25%  {left:-10vw; top:50vw;}
+    50%  {left:50vw; top:50vw;}
+    75%  {left:0vw; top:vw;}
+    100% {left:50vw; top:0vw;}
+}
+.extreme-3 {
+    animation-name: extreme-3;
+    animation-duration: 4.5s;
+    animation-iteration-count: infinite;
+}
+@keyframes extreme-3 {
+    0%   {left:50vw; top:50vw;}
+    25%  {left:50vw; top:0vw;}
+    50%  {left:0vw; top:50vw;}
+    75%  {left:0vw; top:0vw;}
+    100% {left:50vw; top:50vw;}
+}
+.extreme-4 {
+    animation-name: extreme-4;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+}
+@keyframes extreme-4 {
+    0%   {left:50vw; top:0vw;}
+    25%  {left:0vw; top:0vw;}
+    50%  {left:50vw; top:50vw;}
+    75%  {left:0vw; top:50vw;}
+    100% {left:50vw; top:0vw;}
+}
+.score {
     font-size: xx-large;
     margin-top: 2vh;
 }

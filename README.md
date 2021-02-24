@@ -10,7 +10,11 @@ If you would rather download it locally and modify it:
   - `git clone <repository link>`
 - Open it in your favorite code editor and have fun!
 
-![SimonGiphy](https://user-images.githubusercontent.com/77935828/109059533-9534a680-76a1-11eb-80eb-0c6751b792a1.gif)
+![Simon Extreme](https://user-images.githubusercontent.com/77935828/109072798-bea9fe00-76b2-11eb-8c98-02a696645168.gif)
+
+### Feeling EXTREME? Click the button :)
+![extreme](https://user-images.githubusercontent.com/77935828/109073165-42fc8100-76b3-11eb-8d06-2f596955522d.gif)
+
 
 ## Minimum Viable Product (MVP):
 - Have Simon buttons, that are clickable
@@ -34,8 +38,3 @@ If you would rather download it locally and modify it:
 ## Major Hurdles:
 - Evaluating the player input to the computer input, as the player clicks. 
 - Displaying the animations and sounds in sequence without overriding each other.
-
-## Validation:
-HTML: - https://html5.validator.nu/?doc=https%3A%2F%2Fjawilkes232.github.io%2FSimon%2F
-
-CSS - https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fjawilkes232.github.io%2FSimon%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en
