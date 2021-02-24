@@ -1,4 +1,4 @@
-# SIMON!
+# SIMON EXTREME
 Simon is a memory based "repeat after me" style game. First, Simon will display a sequence of colors for you to. Then you will input a sequence back. If it matches you will gain a point! 
 ## How to play:
 If you would like to play online feel free to simply click: jawilkes232.github.io/simon/
