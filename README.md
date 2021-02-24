@@ -30,3 +30,7 @@ If you would rather download it locally and modify it:
 - As a player, I want to track my score over time.
 ## Wireframe:
 ![Screen Shot 2021-02-18 at 3 31 27 PM](https://user-images.githubusercontent.com/77935828/109056842-36b9f900-769e-11eb-93a9-ac3c9f468f92.png)
+
+## Major Hurdles:
+- Evaluating the player input to the computer input, as the player clicks. 
+- Displaying the animations and sounds in sequence without overriding each other.
