@@ -34,3 +34,8 @@ If you would rather download it locally and modify it:
 ## Major Hurdles:
 - Evaluating the player input to the computer input, as the player clicks. 
 - Displaying the animations and sounds in sequence without overriding each other.
+
+## Validation:
+HTML: - https://html5.validator.nu/?doc=https%3A%2F%2Fjawilkes232.github.io%2FSimon%2F
+
+CSS - https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fjawilkes232.github.io%2FSimon%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en
