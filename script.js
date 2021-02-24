@@ -62,7 +62,7 @@ function computerTurn (arr) {
     
 }
 
-
+// Starts a new round and resets players input
 function newRound(){
     playerPattern = []
     roundSpeed -= 80
@@ -70,7 +70,7 @@ function newRound(){
      counter = 0
 }
 
-
+//toggleable turn sequence to disable user input and signal who's turn it is.
 function turns(){
     if(computer){
         computer = false;
@@ -85,37 +85,41 @@ function turns(){
     }
    
 }
+//Helper function to check the elements up to the current item in the players array
+//this creates a more life-like Simon game feel as you press one wrong key and game ends
 function checkPattern(arr1, arr2){
-        for (let i = 0; i < arr1.length; i++) {
+        for (let i = 0; i < arr2.length; i++) {
             if(arr1[i] !== parseInt(arr2[i])){
                return false
             }            
         }
         return true
 }
-
+//Hard resets the game and ensure player can push buttons.
 function reset() {
     computerPattern = []
     playerPattern = []
     scores = 0
     counter = 0
+    roundSpeed = 1075
     allButtons.forEach(button => {
         button.classList.remove('fade')
        })
     scoreBoard.innerHTML = 'Score:' + scores
     signal.innerText = 'Press Start!'
 }
-
+//pushes lose modal 
 function loss() {
     lossScreen.style.display = 'block'
     document.querySelector('.background').style.filter = 'blur(4px)'
 }
+//removes modal and resets game
 function newGame() {
     lossScreen.style.display = 'none'
     document.querySelector('.background').style.filter = 'none'
     reset()
 }
-
+//click handler 
 function handleButtonClick(event){
     if(event.target.classList.contains('button')){
        	event.preventDefault();
@@ -127,19 +131,19 @@ function handleButtonClick(event){
         }, 500)
         // players input updates array
 		playerPattern.push(button.dataset.number)
-        if (playerPattern.length == computerPattern.length) {
-            if(checkPattern(computerPattern,playerPattern)){
-                scores++
-                scoreBoard.innerHTML = 'Score:' + scores
-                newRound()
-            }else {
-                loss()
-            }
+        //checks every input for correct answer
+        if(checkPattern(computerPattern,playerPattern)){
+            if (playerPattern.length == computerPattern.length) {
+                    scores++
+                    scoreBoard.innerHTML = 'Score:' + scores
+                    newRound()
+                }
+        }else {
+            loss()
         }
     }
-    // give score condition
-    // restart turn
 }
+//adds event listeners.
 buttons.addEventListener('click', handleButtonClick)
 goButton.addEventListener('click', newRound)
 resetButton.addEventListener('click', reset)
