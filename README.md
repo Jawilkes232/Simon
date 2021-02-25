@@ -26,9 +26,10 @@ If you would rather download it locally and modify it:
 - Color coded patterns. => color "lights up" to show selected pattern
 - Sounds
 - Pop up lose section.
+- Button that causes Simon pieces to start moving.
 - Time base scoring
 - Over time leaderboard.
-- Bomb button that causes Simon pieces to start moving.
+- Mobile optimization
 ## User Stories:
 - As a player, I want to push the Simon buttons after Simon tells me to, so that I can increase my score
 - As a player, I want to track my score over time.
